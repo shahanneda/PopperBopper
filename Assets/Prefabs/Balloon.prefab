@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 474160266879665753}
   - component: {fileID: 474160266879665755}
   - component: {fileID: 474160266879665756}
+  - component: {fileID: 1168742198433475288}
   m_Layer: 0
   m_Name: Balloon
   m_TagString: Untagged
@@ -120,3 +121,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1168742198433475288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474160266879665752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3af8904eae442caacc8b4066787dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
