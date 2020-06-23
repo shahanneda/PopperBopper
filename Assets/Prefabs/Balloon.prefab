@@ -130,6 +130,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 474160266879665752}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f3af8904eae442caacc8b4066787dc0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1be07fd0c287c4f42a3473f8a8432a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  balloonShatter: {fileID: 8863385567449664056, guid: 664afa478cb7943f3b5b126d2a947a84,
+    type: 3}
+  explosionForce: 1
+  explosionRadius: 1
