@@ -58,6 +58,19 @@ public class Balloon : MonoBehaviour
         Destroy(particleSystem.gameObject, 2);
 
 
+
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, explosionRadius, Vector2.up);
+
+        foreach(RaycastHit2D hit in hits) {
+            Balloon balloon = hit.collider.gameObject.GetComponent<Balloon>();
+            if(balloon != null) {
+                Vector3 direction = balloon.transform.position.normalized - transform.position.normalized;
+                Rigidbody2D rb = balloon.GetComponent<Rigidbody2D>();
+                rb.AddForce(direction * (explosionForce + Random.Range(-1,1)), ForceMode2D.Impulse);
+            }
+
+        }
+
         //GameObject shatteredBallon = Instantiate(balloonShatter, transform.position, transform.rotation, shatterParent);
         //foreach (Transform piece in shatteredBallon.transform) {
         //    // add an explosion force to it, were not using 2d rb since that doesnt have the explostion force helper
