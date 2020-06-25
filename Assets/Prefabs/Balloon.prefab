@@ -97,8 +97,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.86}
-  m_Size: {x: 4.29, y: 5.38}
+  m_Offset: {x: 0.023248672, y: 0.82745075}
+  m_Size: {x: 4.429492, y: 5.519491}
   m_Direction: 0
 --- !u!50 &474160266879665756
 Rigidbody2D:
@@ -134,6 +134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balloonShatter: {fileID: 8863385567449664056, guid: 664afa478cb7943f3b5b126d2a947a84,
+    type: 3}
+  balloonExplodeParticleSystem: {fileID: 3716369066182494769, guid: e79b85d8de05a47238f276505c4fd982,
     type: 3}
   explosionForce: 2000
   explosionRadius: 5

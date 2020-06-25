@@ -6,10 +6,12 @@ public class Balloon : MonoBehaviour
 {
 
     public GameObject balloonShatter;
+    public GameObject balloonExplodeParticleSystem;
 
 
     public float explosionForce = 1f;
     public float explosionRadius = 1f;
+
 
 
     private Rigidbody2D rb;
@@ -42,15 +44,29 @@ public class Balloon : MonoBehaviour
 
 
     private void ExplodeBalloon() {
-        GameObject shatteredBallon = Instantiate(balloonShatter, transform.position, transform.rotation, shatterParent);
-        foreach (Transform piece in shatteredBallon.transform) {
-            // add an explosion force to it, were not using 2d rb since that doesnt have the explostion force helper
-            //piece.GetComponent<Rigidbody>().AddForce(Vector3.left * 100, ForceMode.Impulse);
-            piece.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, explosionRadius);
-            piece.GetComponent<SpriteRenderer>().color = spriteRenderer.color;
+        ParticleSystem particleSystem = Instantiate(balloonExplodeParticleSystem, transform.position, transform.rotation, shatterParent).GetComponent<ParticleSystem>();
 
-            Destroy(piece.gameObject, 5);// destroy the object in 5 seconds
-        }
+
+        ParticleSystem.MainModule main = particleSystem.main;
+        main.startSpeed = 100;
+
+        ParticleSystemRenderer particleSystemRenderer = particleSystem.GetComponent<ParticleSystemRenderer>();
+        particleSystemRenderer.material.color = spriteRenderer.color;
+
+        //main.startColor = spriteRenderer.color;
+        particleSystem.Play();
+        Destroy(particleSystem.gameObject, 2);
+
+
+        //GameObject shatteredBallon = Instantiate(balloonShatter, transform.position, transform.rotation, shatterParent);
+        //foreach (Transform piece in shatteredBallon.transform) {
+        //    // add an explosion force to it, were not using 2d rb since that doesnt have the explostion force helper
+        //    //piece.GetComponent<Rigidbody>().AddForce(Vector3.left * 100, ForceMode.Impulse);
+        //    piece.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, explosionRadius);
+        //    piece.GetComponent<SpriteRenderer>().color = spriteRenderer.color;
+
+        //    Destroy(piece.gameObject, 5);// destroy the object in 5 seconds
+        //}
 
 
 
