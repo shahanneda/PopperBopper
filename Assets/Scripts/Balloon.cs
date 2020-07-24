@@ -33,13 +33,13 @@ public class Balloon : MonoBehaviour
 
     private void OnMouseDown()
     {
+    }
 
+    public void BalloonClicked() { 
         rb.isKinematic = true;
         GetComponent<Collider2D>().isTrigger = true;
-
         ExplodeBalloon();
         Destroy(gameObject);
-
     }
 
 
