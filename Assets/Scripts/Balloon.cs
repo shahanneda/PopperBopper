@@ -11,6 +11,13 @@ public class Balloon : MonoBehaviour
 
     public float explosionForce = 1f;
     public float explosionRadius = 1f;
+    public float distanceMultiplier = 1f;
+    public float randomExplosionModifier = 1f;
+    public float moveSpeed = 1f;
+
+    public bool autoMoveUp = true;
+    
+
 
 
 
@@ -34,9 +41,15 @@ public class Balloon : MonoBehaviour
     private void OnMouseDown()
     {
     }
+    private void FixedUpdate()
+    {
+        if (autoMoveUp) { 
+          rb.MovePosition(new Vector2( transform.position.x, transform.position.y + moveSpeed * Time.deltaTime));
+        }
+    }
 
     public void BalloonClicked() { 
-        rb.isKinematic = true;
+        //rb.isKinematic = true;
         GetComponent<Collider2D>().isTrigger = true;
         ExplodeBalloon();
         Destroy(gameObject);
@@ -59,27 +72,22 @@ public class Balloon : MonoBehaviour
 
 
 
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, explosionRadius, Vector2.up);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, explosionRadius, Vector2.down,1f);
 
         foreach(RaycastHit2D hit in hits) {
-            Balloon balloon = hit.collider.gameObject.GetComponent<Balloon>();
-            if(balloon != null) {
+            GameObject balloon = hit.collider.gameObject;
+            
+            if(balloon != null && balloon.gameObject.tag == "Player") {
+                print(balloon);
                 Vector3 direction = balloon.transform.position.normalized - transform.position.normalized;
+                float distanceModifer = Vector3.Distance(balloon.transform.position, transform.position) * distanceMultiplier;
                 Rigidbody2D rb = balloon.GetComponent<Rigidbody2D>();
-                rb.AddForce(direction * (explosionForce + Random.Range(-1,1)), ForceMode2D.Impulse);
+                rb.AddForce(direction * (explosionForce + Random.Range(-randomExplosionModifier, randomExplosionModifier) ) , ForceMode2D.Impulse) ;
             }
 
         }
 
-        //GameObject shatteredBallon = Instantiate(balloonShatter, transform.position, transform.rotation, shatterParent);
-        //foreach (Transform piece in shatteredBallon.transform) {
-        //    // add an explosion force to it, were not using 2d rb since that doesnt have the explostion force helper
-        //    //piece.GetComponent<Rigidbody>().AddForce(Vector3.left * 100, ForceMode.Impulse);
-        //    piece.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, explosionRadius);
-        //    piece.GetComponent<SpriteRenderer>().color = spriteRenderer.color;
-
-        //    Destroy(piece.gameObject, 5);// destroy the object in 5 seconds
-        //}
+  
 
 
 

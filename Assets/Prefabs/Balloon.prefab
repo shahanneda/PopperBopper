@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474160266879665752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.96, y: 13.34, z: -10}
+  m_LocalPosition: {x: 1.96, y: 13.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -137,5 +137,9 @@ MonoBehaviour:
     type: 3}
   balloonExplodeParticleSystem: {fileID: 3716369066182494769, guid: e79b85d8de05a47238f276505c4fd982,
     type: 3}
-  explosionForce: 1
-  explosionRadius: 5
+  explosionForce: 10.6
+  explosionRadius: 98.15
+  distanceMultiplier: 0.34
+  randomExplosionModifier: 0.25
+  moveSpeed: 1
+  autoMoveUp: 1

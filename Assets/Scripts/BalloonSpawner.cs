@@ -25,7 +25,7 @@ public class BalloonSpawner : MonoBehaviour
 
 
     private void SpawnNewBalloon() {
-        Vector2 position = new Vector2(Random.Range(-7, 7), transform.position.y);
+        Vector2 position = new Vector2( Random.Range(0,1) > 0.5f ? Random.Range(-7, -4) : Random.Range(4,7), transform.position.y);
         GameObject balloon = Instantiate(balloonPrefab, position, Quaternion.identity, transform);
         balloon.GetComponent<SpriteRenderer>().color = new Color(
             Random.Range(0, 1.0f), 

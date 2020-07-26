@@ -27,11 +27,9 @@ public class GameManager : MonoBehaviour
 
     void handleClickOn(Vector3 pos) { // doing this manually instead of the built in OnClick because of some bugs with the unity systemk
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(pos);
-        print(worldPos);
         worldPos.z = 0;
         //GameObject.FindGameObjectWithTag("Player").transform.position = worldPos;
         RaycastHit2D  hit = Physics2D.CircleCast(worldPos, 0.5f, Vector2.up, 0.1f);
-        print(hit.collider);
         if(hit.collider != null) {
             Balloon balloon = hit.collider.GetComponent<Balloon>();
             if(balloon != null) { // check if object is actually a balloon
