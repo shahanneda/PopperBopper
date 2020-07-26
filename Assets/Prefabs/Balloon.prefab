@@ -141,5 +141,5 @@ MonoBehaviour:
   explosionRadius: 98.15
   distanceMultiplier: 0.34
   randomExplosionModifier: 0.25
-  moveSpeed: 1
+  moveSpeed: 1.66
   autoMoveUp: 1
