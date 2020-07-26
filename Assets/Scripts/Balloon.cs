@@ -15,7 +15,7 @@ public class Balloon : MonoBehaviour
     public float randomExplosionModifier = 1f;
     public float moveSpeed = 1f;
 
-    public bool autoMoveUp = true;
+    public bool autoMoveUp = false;
     
 
 
