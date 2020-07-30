@@ -78,13 +78,15 @@ public class Balloon : MonoBehaviour
             GameObject balloon = hit.collider.gameObject;
             
             if(balloon != null && balloon.gameObject.tag == "Player") {
-                print(balloon);
-                Vector3 direction = (balloon.transform.position.normalized - transform.position.normalized).normalized;
+                Vector3 direction = (balloon.transform.position - transform.position).normalized;
+
+                print(direction);
                 float distanceModifer = Mathf.Clamp(
                     (Vector3.Distance(balloon.transform.position, transform.position) * distanceMultiplier)/10,0,1) * explosionForce;
 
                 Rigidbody2D rb = balloon.GetComponent<Rigidbody2D>();
-                rb.AddForce(direction * (explosionForce + Random.Range(-randomExplosionModifier, randomExplosionModifier) - distanceModifer ) , ForceMode2D.Impulse) ;
+                rb.AddForce(direction * (explosionForce + Random.Range(-randomExplosionModifier, randomExplosionModifier) - distanceModifer), ForceMode2D.Impulse);
+                //rb.AddForce(direction * 10, ForceMode2D.Impulse);
             }
 
         }
