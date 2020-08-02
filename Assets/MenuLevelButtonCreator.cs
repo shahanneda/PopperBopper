@@ -30,7 +30,6 @@ public class MenuLevelButtonCreator : MonoBehaviour
     public void LevelButtonClicked(int level)
     {
         SceneManager.LoadScene("Level" + level);
-       
     }
 
 }

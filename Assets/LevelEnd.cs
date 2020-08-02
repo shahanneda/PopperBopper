@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class LevelEnd : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private GameManager gameManager;
 
-    // Update is called once per frame
-    void Update()
+     void Start()
     {
+        gameManager = GameObject.FindObjectOfType<GameManager>();
+
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player")) {
+            gameManager.LevelEndReached();
+        }
         
     }
 }
