@@ -80,7 +80,6 @@ public class Balloon : MonoBehaviour
             if(balloon != null && balloon.gameObject.tag == "Player") {
                 Vector3 direction = (balloon.transform.position - transform.position).normalized;
 
-                print(direction);
                 float distanceModifer = Mathf.Clamp(
                     (Vector3.Distance(balloon.transform.position, transform.position) * distanceMultiplier)/10,0,1) * explosionForce;
 

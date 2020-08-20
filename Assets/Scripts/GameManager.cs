@@ -15,8 +15,10 @@ public class GameManager : MonoBehaviour
     {
         currentLevelNumber = int.Parse(SceneManager.GetActiveScene().name.Substring(5)); // level3
 
-        print(SceneManager.GetSceneByName("Level2").IsValid());
-        if (!SceneManager.GetSceneByName("Level" + (currentLevelNumber + 1)).IsValid()) {
+        print(Application.CanStreamedLevelBeLoaded("Level2"));
+        print(currentLevelNumber);
+        if (!Application.CanStreamedLevelBeLoaded("Level" + (currentLevelNumber + 1))) {
+            print("next level not valid");
             GameObject.Find("NextLevelButton").SetActive(false);
         }
 
@@ -66,7 +68,7 @@ public class GameManager : MonoBehaviour
     }
     public void NextLevelButtonClicked()
     {
-        if (SceneManager.GetSceneByName("Level" + (currentLevelNumber + 1)).IsValid())
+        if (Application.CanStreamedLevelBeLoaded("Level" + (currentLevelNumber + 1)))
         {
             SceneManager.LoadScene("Level" + (currentLevelNumber + 1));
         }
