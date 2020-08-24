@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
             GameObject.Find("NextLevelButton").SetActive(false);
         }
 
-        levelGui = FindObjectOfType<Canvas>().gameObject;
+        levelGui = GameObject.FindGameObjectWithTag("LevelGui");
         levelGui.SetActive(false);
     }
 
