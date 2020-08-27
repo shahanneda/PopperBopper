@@ -50,6 +50,9 @@ TagManager:
   - name: Balloons
     uniqueID: 12235227
     locked: 0
+  - name: Particles
+    uniqueID: 3995943391
+    locked: 0
   - name: Player
     uniqueID: 694859259
     locked: 0

@@ -98,7 +98,7 @@ public class Balloon : MonoBehaviour
 
                 bool shouldBeStronger = balloonpoppedPowerup.BalloonPopped(spriteRenderer.color, direction);
                 Rigidbody2D rb = balloon.GetComponent<Rigidbody2D>();
-                rb.AddForce(direction * (explosionForce * (shouldBeStronger ? explosionIncreaseMultiplier : 1.0f)
+                rb.AddForce(direction * (explosionForce  
                     
                      + Random.Range(-randomExplosionModifier, randomExplosionModifier) - distanceModifer), ForceMode2D.Impulse);
                 //rb.AddForce(direction * 10, ForceMode2D.Impulse);

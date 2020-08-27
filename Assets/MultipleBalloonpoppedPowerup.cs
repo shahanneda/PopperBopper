@@ -9,6 +9,7 @@ public class MultipleBalloonpoppedPowerup : MonoBehaviour
 
     public float balloonMoveSpeed = 10.0f;
     public float distanceToMoveTo = 10.0f;
+    public float explosionForce = 10.0f;
     public GameObject explodeParticleSystemPrefab;
 
     private bool shouldMoveTowardPlayer;
@@ -61,11 +62,14 @@ public class MultipleBalloonpoppedPowerup : MonoBehaviour
 
 
     public void MoveTowardsPlayer() {
-        Vector3 playerWorldPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+        Player player = FindObjectOfType<Player>();
+        Vector3 playerWorldPos = player.transform.position;
         Vector2 playerPos = Camera.main.WorldToScreenPoint(playerWorldPos);
+
         foreach(Image g in childBalloonIcons) {
             g.transform.position = Vector3.Lerp(g.transform.position,playerPos, balloonMoveSpeed * Time.deltaTime);
         }
+
         // check if done
         if(Vector2.Distance(playerPos, childBalloonIcons[0].transform.position) < distanceToMoveTo && Vector2.Distance(playerPos, childBalloonIcons[1].transform.position) < distanceToMoveTo
             ) {
@@ -73,8 +77,13 @@ public class MultipleBalloonpoppedPowerup : MonoBehaviour
             GameObject particle = Instantiate(explodeParticleSystemPrefab, playerWorldPos, Quaternion.identity);
             particle.transform.forward = -boostDirection;
             particle.GetComponent<ParticleSystemRenderer>().material.color = AverageColor(childBalloonIcons);
+
+
+            player.GetComponent<Rigidbody2D>().AddForce(boostDirection * explosionForce , ForceMode2D.Impulse);
+
             Destroy(particle, 2);
             ResetChildBaloonIcons();
+
         }
 
 
