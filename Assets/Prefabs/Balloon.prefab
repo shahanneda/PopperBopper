@@ -142,4 +142,7 @@ MonoBehaviour:
   distanceMultiplier: 0.34
   randomExplosionModifier: 0.25
   moveSpeed: 1.66
+  growSpeed: 10
   autoMoveUp: 0
+  shouldGrowToFull: 0
+  explosionIncreaseMultiplier: 1.5

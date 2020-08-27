@@ -27,11 +27,17 @@ public class Balloon : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Transform shatterParent;
 
+    private MultipleBalloonpoppedPowerup balloonpoppedPowerup;
+
+    public static int balloonPoppedCounter = 0;
+    public float explosionIncreaseMultiplier = 1.5f;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         shatterParent = GameObject.FindGameObjectWithTag("ShatterParent").transform;
+        balloonpoppedPowerup = FindObjectOfType<MultipleBalloonpoppedPowerup>();
     }
 
     // Update is called once per frame
@@ -79,26 +85,29 @@ public class Balloon : MonoBehaviour
         Destroy(particleSystem.gameObject, 2);
 
 
-
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, explosionRadius, Vector2.down,1f);
 
         foreach(RaycastHit2D hit in hits) {
             GameObject balloon = hit.collider.gameObject;
             
             if(balloon != null && balloon.gameObject.tag == "Player") {
-                Vector3 direction = (balloon.transform.position - transform.position).normalized;
 
+                Vector3 direction = (balloon.transform.position - transform.position).normalized;
                 float distanceModifer = Mathf.Clamp(
                     (Vector3.Distance(balloon.transform.position, transform.position) * distanceMultiplier)/10,0,1) * explosionForce;
 
+                bool shouldBeStronger = balloonpoppedPowerup.BalloonPopped(spriteRenderer.color, direction);
                 Rigidbody2D rb = balloon.GetComponent<Rigidbody2D>();
-                rb.AddForce(direction * (explosionForce + Random.Range(-randomExplosionModifier, randomExplosionModifier) - distanceModifer), ForceMode2D.Impulse);
+                rb.AddForce(direction * (explosionForce * (shouldBeStronger ? explosionIncreaseMultiplier : 1.0f)
+                    
+                     + Random.Range(-randomExplosionModifier, randomExplosionModifier) - distanceModifer), ForceMode2D.Impulse);
                 //rb.AddForce(direction * 10, ForceMode2D.Impulse);
             }
 
-        }
 
-  
+
+        }
+        //print(balloonPoppedCounter);
 
 
 

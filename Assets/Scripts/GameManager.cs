@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
         currentLevelNumber = int.Parse(SceneManager.GetActiveScene().name.Substring(5)); 
 
         print(Application.CanStreamedLevelBeLoaded("Level2"));
-        print(currentLevelNumber);
         if (!Application.CanStreamedLevelBeLoaded("Level" + (currentLevelNumber + 1))) {
             print("next level not valid");
             GameObject.Find("NextLevelButton").SetActive(false);
@@ -79,5 +78,6 @@ public class GameManager : MonoBehaviour
     {
         levelFinished = true;
         levelGui.SetActive(true);
+        Balloon.balloonPoppedCounter = 0;
     }
 }

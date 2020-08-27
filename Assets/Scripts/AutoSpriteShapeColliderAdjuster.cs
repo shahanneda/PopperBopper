@@ -77,25 +77,25 @@ public class AutoSpriteShapeColliderAdjuster : MonoBehaviour
             currentArrayPointIndex += 2; // 2 since we put in 2 points
         }
 
-        //for (int i = 0; i < colPoints.Length - 2; i++)
-        //{
-        //    Vector3 targetDir = spline.GetPosition(1) - spline.GetPosition(0);
-        //    float angle = Vector3.Angle(targetDir.normalized, transform.right);
-        //    print(angle);
-        //    angle = angle * Mathf.PI / 180;
-        //    angle = angle > 90 ? angle - 90 : angle;
+        for (int i = 0; i < colPoints.Length - 2; i++)
+        {
+            Vector3 targetDir = spline.GetPosition(1) - spline.GetPosition(0);
+            float angle = Vector3.Angle(targetDir.normalized, transform.right);
+            print(angle);
+            angle = angle * Mathf.PI / 180;
+            angle = angle > 90 ? angle - 90 : angle;
 
-        //    Vector2 p1 = colPoints[i];
-        //    Vector2 p2 = colPoints[i + 2];
+            Vector2 p1 = colPoints[i];
+            Vector2 p2 = colPoints[i + 2];
 
-        //    p1 = new Vector2(p1.x - Mathf.Cos(angle) * widthOfCollider, p1.y + Mathf.Sin(angle) * widthOfCollider);
-        //    p2 = new Vector2(p2.x + Mathf.Cos(angle) * widthOfCollider, p2.y - Mathf.Sin(angle) * widthOfCollider);
+            p1 = new Vector2(p1.x - Mathf.Cos(angle) * widthOfCollider, p1.y + Mathf.Sin(angle) * widthOfCollider);
+            p2 = new Vector2(p2.x + Mathf.Cos(angle) * widthOfCollider, p2.y - Mathf.Sin(angle) * widthOfCollider);
 
-        //    colPoints[i] = p1;
-        //    colPoints[i + 2] = p2;
+            colPoints[i] = p1;
+            colPoints[i + 2] = p2;
 
 
-        //}
+        }
 
         col.points = colPoints;
     }
