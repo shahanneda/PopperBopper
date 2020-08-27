@@ -5,6 +5,7 @@ using UnityEngine.U2D;
 
 [ExecuteInEditMode]
 public class AutoSpriteShapeColliderAdjuster : MonoBehaviour
+
 {
     private SpriteShapeController spriteShapeController;
     private PolygonCollider2D col;
@@ -24,6 +25,11 @@ public class AutoSpriteShapeColliderAdjuster : MonoBehaviour
     }
 
 
+    private void OnValidate()
+    {
+        UpdateCollider();
+        
+    }
     void UpdateCollider()
     {
         print("Updated Collider");
@@ -32,6 +38,7 @@ public class AutoSpriteShapeColliderAdjuster : MonoBehaviour
 
         Spline spline = spriteShapeController.spline;
         //col.points = new Vector2[0];
+        
 
         Vector2[] colPoints = new Vector2[spline.GetPointCount() * 2 ];
 
@@ -47,8 +54,8 @@ public class AutoSpriteShapeColliderAdjuster : MonoBehaviour
             print("sin " + Mathf.Sin(angle ));
 
 
-            Vector2 point1 = new Vector3(pos.x + Mathf.Sin(angle)*thicknessOfCollider, pos.y + (1-Mathf.Sin(angle))*thicknessOfCollider);
-            Vector2 point2 = new Vector3(pos.x - Mathf.Sin(angle)*thicknessOfCollider, pos.y - (1-Mathf.Sin(angle))*thicknessOfCollider);
+            Vector2 point1 = new Vector3(pos.x + Mathf.Sin(angle)*thicknessOfCollider, pos.y + (Mathf.Cos(angle))*thicknessOfCollider);
+            Vector2 point2 = new Vector3(pos.x - Mathf.Sin(angle)*thicknessOfCollider, pos.y - (Mathf.Cos(angle))*thicknessOfCollider);
 
             if (firstOne) { 
               colPoints[currentArrayPointIndex] = point1;
@@ -66,6 +73,6 @@ public class AutoSpriteShapeColliderAdjuster : MonoBehaviour
         }
        
 
-        col.SetPath(0, colPoints);
+        col.points = colPoints;
     }
 }
