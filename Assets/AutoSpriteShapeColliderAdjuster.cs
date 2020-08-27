@@ -43,6 +43,7 @@ public class AutoSpriteShapeColliderAdjuster : MonoBehaviour
 
         Vector2[] colPoints = new Vector2[spline.GetPointCount() * 2 ];
 
+
         int currentArrayPointIndex = 0; // since we want to put in the point in order, this will go up twice as fast as i 
         bool firstOne = true; // we need the points to be Lr rL, so in the second loop this wil lbe false
         for(int i = 0; i< spline.GetPointCount(); i++) {
@@ -50,13 +51,15 @@ public class AutoSpriteShapeColliderAdjuster : MonoBehaviour
 
             Vector3 targetDir = spline.GetPosition(1) - spline.GetPosition(0);
             float angle = Vector3.Angle(targetDir.normalized, transform.right);
+            print(angle);
             angle = angle * Mathf.PI / 180;
+            angle = angle > 180 ? -angle  : angle;
 
 
-            Vector2 point1 = new Vector3(pos.x + Mathf.Sin(angle)*thicknessOfCollider ,
+            Vector2 point1 = new Vector2(pos.x + Mathf.Sin(angle)*thicknessOfCollider ,
                  pos.y + (Mathf.Cos(angle))*thicknessOfCollider );
 
-            Vector2 point2 = new Vector3(pos.x - Mathf.Sin(angle)*thicknessOfCollider ,
+            Vector2 point2 = new Vector2(pos.x - Mathf.Sin(angle)*thicknessOfCollider ,
                  pos.y - (Mathf.Cos(angle))*thicknessOfCollider );
 
             if (firstOne) { 
@@ -74,18 +77,25 @@ public class AutoSpriteShapeColliderAdjuster : MonoBehaviour
             currentArrayPointIndex += 2; // 2 since we put in 2 points
         }
 
-        for(int i = 0; i<colPoints.Length - 2; i++) {
-            Vector2 p1 = colPoints[i];
-            Vector2 p2 = colPoints[i + 2];
+        //for (int i = 0; i < colPoints.Length - 2; i++)
+        //{
+        //    Vector3 targetDir = spline.GetPosition(1) - spline.GetPosition(0);
+        //    float angle = Vector3.Angle(targetDir.normalized, transform.right);
+        //    print(angle);
+        //    angle = angle * Mathf.PI / 180;
+        //    angle = angle > 90 ? angle - 90 : angle;
 
-            p1 = new Vector2(p1.x + widthOfCollider, p1.y);
-            p2 = new Vector2(p2.x - widthOfCollider, p2.y);
+        //    Vector2 p1 = colPoints[i];
+        //    Vector2 p2 = colPoints[i + 2];
 
-            colPoints[i] = p1;
-            colPoints[i+2] = p2;
+        //    p1 = new Vector2(p1.x - Mathf.Cos(angle) * widthOfCollider, p1.y + Mathf.Sin(angle) * widthOfCollider);
+        //    p2 = new Vector2(p2.x + Mathf.Cos(angle) * widthOfCollider, p2.y - Mathf.Sin(angle) * widthOfCollider);
+
+        //    colPoints[i] = p1;
+        //    colPoints[i + 2] = p2;
 
 
-        }
+        //}
 
         col.points = colPoints;
     }
