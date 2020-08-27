@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentLevelNumber = int.Parse(SceneManager.GetActiveScene().name.Substring(5)); // level3
+        currentLevelNumber = int.Parse(SceneManager.GetActiveScene().name.Substring(5)); 
 
         print(Application.CanStreamedLevelBeLoaded("Level2"));
         print(currentLevelNumber);
