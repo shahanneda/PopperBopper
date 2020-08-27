@@ -5,6 +5,7 @@ using UnityEngine;
 public class OneBalloonSpawner : MonoBehaviour
 {
     public GameObject balloonPrefab;
+    public float balloonSpawnDelay = 0.5f;
 
     private GameObject balloon = null;
     private bool triggeredSpawn = false;
@@ -19,7 +20,8 @@ public class OneBalloonSpawner : MonoBehaviour
               Random.Range(0, 1.0f));
 
         transform.GetChild(0).GetComponent<SpriteRenderer>().color = padColor;
-        SpawnBalloon();
+        StartCoroutine(balloonSpawnCoroutine());
+        triggeredSpawn = true;
     }
 
     // Update is called once per frame
@@ -36,12 +38,14 @@ public class OneBalloonSpawner : MonoBehaviour
 
     IEnumerator balloonSpawnCoroutine()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(balloonSpawnDelay);
         SpawnBalloon();
     }
     void SpawnBalloon()
     {
         balloon = Instantiate(balloonPrefab, transform.position, Quaternion.identity, transform);
+        balloon.transform.localScale = Vector2.zero;
+        balloon.GetComponent<Balloon>().shouldGrowToFull = true;
         balloon.GetComponent<SpriteRenderer>().color = padColor;
         triggeredSpawn = false; // since corutine is done we can reset it now;
     }

@@ -14,8 +14,10 @@ public class Balloon : MonoBehaviour
     public float distanceMultiplier = 1f;
     public float randomExplosionModifier = 1f;
     public float moveSpeed = 1f;
+    public float growSpeed = 10.0f;
 
     public bool autoMoveUp = false;
+    public bool shouldGrowToFull = false;
     
 
 
@@ -35,6 +37,12 @@ public class Balloon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(shouldGrowToFull && Vector3.Distance(Vector3.one, transform.localScale) < 0.01f) {
+            shouldGrowToFull = false;
+        }
+        if (shouldGrowToFull) {
+            transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one, Time.deltaTime * growSpeed);
+        }
         
     }
 

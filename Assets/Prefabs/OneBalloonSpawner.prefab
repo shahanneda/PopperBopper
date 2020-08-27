@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balloonPrefab: {fileID: 474160266879665752, guid: 42f4e397397fe466db5f77c3bef223ff,
     type: 3}
+  balloonSpawnDelay: 0.3
 --- !u!212 &8516156519048893694
 SpriteRenderer:
   m_ObjectHideFlags: 0
