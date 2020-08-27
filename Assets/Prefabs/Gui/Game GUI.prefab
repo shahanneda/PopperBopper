@@ -303,9 +303,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fedcc02c03f35476294f8a5a72879ed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balloonMoveSpeed: 72.37
-  distanceToMoveTo: 10
-  explodeParticleSystemPrefab: {fileID: 0}
+  balloonMoveSpeed: 5
+  distanceToMoveTo: 15
+  explosionForce: 60
+  explodeParticleSystemPrefab: {fileID: 3716369066182494769, guid: da7928e5524f543919e8e4360c2ea6e8,
+    type: 3}
+  growBackSpeed: 100
 --- !u!1 &1440109196
 GameObject:
   m_ObjectHideFlags: 0

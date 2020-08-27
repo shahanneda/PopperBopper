@@ -101,9 +101,12 @@ public class MultipleBalloonpoppedPowerup : MonoBehaviour
         {
             shouldMoveTowardPlayer = false;
             GameObject particle = Instantiate(explodeParticleSystemPrefab, playerWorldPos, Quaternion.identity);
-            particle.transform.forward = -boostDirection;
+            particle.transform.right = -boostDirection;
             particle.GetComponent<ParticleSystemRenderer>().material.color = AverageColor(childBalloonIcons);
+            
             player.GetComponent<Rigidbody2D>().AddForce(boostDirection * explosionForce, ForceMode2D.Impulse);
+            
+            //Handheld.Vibrate();
 
 
             Destroy(particle, 2);

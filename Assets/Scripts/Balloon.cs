@@ -92,9 +92,9 @@ public class Balloon : MonoBehaviour
             
             if(balloon != null && balloon.gameObject.tag == "Player") {
 
-                Vector3 direction = (balloon.transform.position - transform.position).normalized;
+                Vector2 direction = (balloon.transform.position - transform.position).normalized;
                 float distanceModifer = Mathf.Clamp(
-                    (Vector3.Distance(balloon.transform.position, transform.position) * distanceMultiplier)/10,0,1) * explosionForce;
+                    (Vector2.Distance(balloon.transform.position, transform.position) * distanceMultiplier)/10,0,1) * explosionForce;
 
                 bool shouldBeStronger = balloonpoppedPowerup.BalloonPopped(spriteRenderer.color, direction);
                 Rigidbody2D rb = balloon.GetComponent<Rigidbody2D>();
