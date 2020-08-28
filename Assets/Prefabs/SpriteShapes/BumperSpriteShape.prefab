@@ -70,8 +70,8 @@ SpriteShapeRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1316780803
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Color: {r: 0, g: 0.078431375, b: 0.34117648, a: 1}
   m_MaskInteraction: 0
@@ -79,8 +79,8 @@ SpriteShapeRenderer:
   m_Sprites:
   - {fileID: 21300000, guid: f1fb09bd0d2b54123a3adbd390b5b8ea, type: 3}
   m_LocalAABB:
-    m_Center: {x: -10.347429, y: -0.26293993, z: -0.005}
-    m_Extent: {x: 10.347429, y: 5.1606517, z: 0.005}
+    m_Center: {x: -9.838897, y: 3.5808418, z: -0.00501}
+    m_Extent: {x: 9.838897, y: 3.5808418, z: 0.00501}
 --- !u!114 &4773303102863538829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,9 +94,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Spline:
-    m_IsOpenEnded: 1
+    m_IsOpenEnded: 0
     m_ControlPoints:
-    - position: {x: -18.636707, y: 2.7053442, z: 0}
+    - position: {x: -18.636707, y: 2.7053452, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -105,7 +105,16 @@ MonoBehaviour:
       bevelSize: 0
       spriteIndex: 0
       corner: 0
-    - position: {x: -12.018135, y: -3.2312088, z: 0}
+    - position: {x: -6.803276, y: 4.7098923, z: 0}
+      leftTangent: {x: 0, y: 0, z: 0}
+      rightTangent: {x: 0, y: 0, z: 0}
+      mode: 0
+      height: 1
+      bevelCutoff: 0
+      bevelSize: 0
+      spriteIndex: 0
+      corner: 1
+    - position: {x: -12.748306, y: 3.7636776, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
       mode: 0
@@ -123,8 +132,8 @@ MonoBehaviour:
   m_WorldSpaceUV: 0
   m_CornerAngleThreshold: 30
   m_ColliderDetail: 16
-  m_ColliderOffset: 0.081
-  m_UpdateCollider: 0
+  m_ColliderOffset: -0.5
+  m_UpdateCollider: 1
   m_OptimizeCollider: 1
   m_OptimizeGeometry: 1
   m_EnableTangents: 0
@@ -137,7 +146,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 6651123640642805897}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9f51f88e742c048178bd3c02959258b2, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -153,7 +162,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -17.48972, y: 4.600423}
-      - {x: -20.439545, y: 1.0835352}
-      - {x: -13.0011635, y: -5.1809406}
-      - {x: -10.488567, y: -2.0466328}
+    - - {x: -18.860348, y: 0.25355327}
+      - {x: -5.784622, y: 2.4685435}
+      - {x: -6.5551953, y: 7.1593323}
+      - {x: -13.145846, y: 6.110359}
+      - {x: -19.057728, y: 5.0478096}
+      - {x: -19.677792, y: 4.936363}
+      - {x: -18.860348, y: 0.2535534}
