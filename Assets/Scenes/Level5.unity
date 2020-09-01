@@ -3917,51 +3917,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 826558609254240218, guid: 90543a276001f4974a7f0c3ed5dbee04,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 826558609254240218, guid: 90543a276001f4974a7f0c3ed5dbee04,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 826558609254240218, guid: 90543a276001f4974a7f0c3ed5dbee04,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 826558609254240218, guid: 90543a276001f4974a7f0c3ed5dbee04,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 826558609254240219, guid: 90543a276001f4974a7f0c3ed5dbee04,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 311997845}
-    - target: {fileID: 826558610715671670, guid: 90543a276001f4974a7f0c3ed5dbee04,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 826558610715671670, guid: 90543a276001f4974a7f0c3ed5dbee04,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 826558610715671670, guid: 90543a276001f4974a7f0c3ed5dbee04,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 826558610715671670, guid: 90543a276001f4974a7f0c3ed5dbee04,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 826558610715671671, guid: 90543a276001f4974a7f0c3ed5dbee04,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4076,16 +4036,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Level Gui
-      objectReference: {fileID: 0}
-    - target: {fileID: 7486790765014937646, guid: 90543a276001f4974a7f0c3ed5dbee04,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7486790765014937646, guid: 90543a276001f4974a7f0c3ed5dbee04,
-        type: 3}
-      propertyPath: m_TagString
-      value: LevelGui
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90543a276001f4974a7f0c3ed5dbee04, type: 3}

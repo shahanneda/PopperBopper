@@ -5,7 +5,9 @@ using UnityEngine;
 public class DangerSwitcher : MonoBehaviour
 {
 
-    public float SwitchIntervalInSeconds = 2f;
+    public float SecondsInGreen = 3f;
+    public float SecondsInRed = 2f;
+
     private float lastSwitchTime;
 
     public float speedBoostMultiplier = 1.5f;
@@ -27,7 +29,7 @@ public class DangerSwitcher : MonoBehaviour
 
     void Update()
     {
-        if(Time.time > lastSwitchTime + SwitchIntervalInSeconds) {
+        if(Time.time > lastSwitchTime + (isDanger ? SecondsInRed : SecondsInGreen)) {
             lastSwitchTime = Time.time;
             colorChanger.DoCompleteTransition();
             isDanger = !isDanger;
