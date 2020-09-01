@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
     private bool shouldAutoMoveToTarget = false;
 
     public float levelEndSpeed = 10.0f;
-    private Rigidbody2D rb;
+    [HideInInspector]
+    public Rigidbody2D rb;
 
     public float shrinkSpeed = 10.0f;
     private bool shouldShrink;
@@ -42,11 +43,17 @@ public class Player : MonoBehaviour
     }
 
     public void reachedLevelEnd(Vector3 endPos) {
+        ShouldMoveAndGetSmallerTowardsTarget(endPos);
+    }
+    public void Die(Vector3 endPos) {
+        ShouldMoveAndGetSmallerTowardsTarget(endPos);
+    }
+
+    public void ShouldMoveAndGetSmallerTowardsTarget(Vector3 endPos) { 
         shouldAutoMoveToTarget = true;
         shouldShrink = true;
         targetPos = endPos;
         rb.isKinematic = true;
         rb.velocity = Vector2.zero;
-    
     }
 }

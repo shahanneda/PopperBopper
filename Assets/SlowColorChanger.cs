@@ -12,7 +12,8 @@ public class SlowColorChanger : MonoBehaviour
 
     public bool DoTransition = false;
 
-    SpriteRenderer spriteRenderer;
+    [HideInInspector]
+    public SpriteRenderer spriteRenderer;
 
     void Start()
     {

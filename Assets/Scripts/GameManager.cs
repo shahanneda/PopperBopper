@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,18 +12,26 @@ public class GameManager : MonoBehaviour
     public bool levelFinished = false;
 
     private GameObject levelGui;
+    private GameObject nextLevelButton;
+    private GameObject restartLevelButton;
+    private TextMeshProUGUI levelFinishedText;
+    private SlowColorChanger levelEndTint;
     // Start is called before the first frame update
     void Start()
     {
-        currentLevelNumber = int.Parse(SceneManager.GetActiveScene().name.Substring(5)); 
+        levelGui = GameObject.FindGameObjectWithTag("LevelGui");
 
-        print(Application.CanStreamedLevelBeLoaded("Level2"));
+        levelFinishedText = levelGui.transform.Find("LevelFinishedText").GetComponent<TextMeshProUGUI>();
+        levelEndTint = levelGui.transform.Find("LevelEndTint").GetComponent<SlowColorChanger>();
+
+        currentLevelNumber = int.Parse(SceneManager.GetActiveScene().name.Substring(5));
+        restartLevelButton = levelGui.transform.Find("Buttons").Find("RestartLevelButton").gameObject;
+        nextLevelButton =    levelGui.transform.Find("Buttons").Find("NextLevelButton").gameObject;
+
         if (!Application.CanStreamedLevelBeLoaded("Level" + (currentLevelNumber + 1))) {
-            print("next level not valid");
-            GameObject.Find("NextLevelButton").SetActive(false);
+            nextLevelButton.SetActive(false);
         }
 
-        levelGui = GameObject.FindGameObjectWithTag("LevelGui");
         levelGui.SetActive(false);
     }
 
@@ -74,10 +84,32 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void RestartButtonClicked()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void LevelEndReached()
     {
         levelFinished = true;
         levelGui.SetActive(true);
+        restartLevelButton.SetActive(false);
+        levelEndTint.colorsToChangeTo = new Color[] {levelEndTint.spriteRenderer.color, new Color(0,1,0,0.5f)};
+        levelEndTint.DoCompleteTransition();
+
         Balloon.balloonPoppedCounter = 0;
+    }
+
+    public void PlayerDead() {
+        levelFinished = true;
+        levelGui.SetActive(true);
+        nextLevelButton.SetActive(false);
+        restartLevelButton.SetActive(true);
+        levelEndTint.colorsToChangeTo = new Color[] { new Color(1,1,1,1), new Color(1, 0, 0, 0.5f)};
+
+        levelFinishedText.SetText("Level Failed");
+
+        levelEndTint.DoCompleteTransition();
+
     }
 }
