@@ -14,19 +14,37 @@ public class GameManager : MonoBehaviour
     private GameObject levelGui;
     private GameObject nextLevelButton;
     private GameObject restartLevelButton;
+    private GameObject menuButton;
+
     private TextMeshProUGUI levelFinishedText;
     private SlowColorChanger levelEndTint;
+    private SlowColorChanger levelFinishedLogo;
+
     // Start is called before the first frame update
     void Start()
     {
         levelGui = GameObject.FindGameObjectWithTag("LevelGui");
 
-        levelFinishedText = levelGui.transform.Find("LevelFinishedText").GetComponent<TextMeshProUGUI>();
+        levelFinishedText = levelGui.transform.Find("LevelFinishedLogo").GetComponentInChildren<TextMeshProUGUI>();
         levelEndTint = levelGui.transform.Find("LevelEndTint").GetComponent<SlowColorChanger>();
+        levelFinishedLogo = levelGui.transform.Find("LevelFinishedLogo").GetComponent<SlowColorChanger>();
 
         currentLevelNumber = int.Parse(SceneManager.GetActiveScene().name.Substring(5));
+
+        menuButton = levelGui.transform.Find("Buttons").Find("MenuButton").gameObject;
         restartLevelButton = levelGui.transform.Find("Buttons").Find("RestartLevelButton").gameObject;
-        nextLevelButton =    levelGui.transform.Find("Buttons").Find("NextLevelButton").gameObject;
+        nextLevelButton = levelGui.transform.Find("Buttons").Find("NextLevelButton").gameObject;
+
+        menuButton.GetComponent<Button>().onClick.AddListener(MenuButtonClicked);
+        nextLevelButton.GetComponent<Button>().onClick.AddListener(NextLevelButtonClicked);
+        restartLevelButton.GetComponent<Button>().onClick.AddListener(RestartButtonClicked);
+
+
+
+        levelFinishedLogo.colorsToChangeTo = new Color[] { Color.yellow, Color.red };
+
+        levelFinishedLogo.colorTransitionSpeed = 1;
+
 
         if (!Application.CanStreamedLevelBeLoaded("Level" + (currentLevelNumber + 1))) {
             nextLevelButton.SetActive(false);
@@ -97,6 +115,10 @@ public class GameManager : MonoBehaviour
         levelEndTint.colorsToChangeTo = new Color[] {levelEndTint.spriteRenderer.color, new Color(0,1,0,0.5f)};
         levelEndTint.DoCompleteTransition();
 
+        levelFinishedLogo.colorsToChangeTo = new Color[] { Color.yellow, Color.green };
+        levelFinishedText.text = "Level\n" + currentLevelNumber;
+        levelFinishedLogo.DoCompleteTransition();
+
         Balloon.balloonPoppedCounter = 0;
     }
 
@@ -107,7 +129,9 @@ public class GameManager : MonoBehaviour
         restartLevelButton.SetActive(true);
         levelEndTint.colorsToChangeTo = new Color[] { new Color(1,1,1,1), new Color(1, 0, 0, 0.5f)};
 
-        levelFinishedText.SetText("Level Failed");
+        levelFinishedLogo.colorsToChangeTo = new Color[] { Color.yellow, Color.red };
+        levelFinishedText.text = "Level\n" + currentLevelNumber;
+        levelFinishedLogo.DoCompleteTransition();
 
         levelEndTint.DoCompleteTransition();
 

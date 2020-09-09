@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class SlowColorChanger : MonoBehaviour
 {
     public Color[] colorsToChangeTo;
@@ -13,33 +13,76 @@ public class SlowColorChanger : MonoBehaviour
     public bool DoTransition = false;
 
     [HideInInspector]
-    public SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer = null;
+
+    [HideInInspector]
+    public Image image = null;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null)
+        {
+            image = GetComponent<Image>();
+            if (image == null)
+            {
+                Debug.LogError("No image or sprite renderer attached to color changer!!!");
+            }
+        }
     }
 
     void Update()
     {
-        if(!spriteRenderer.color.IsCloseTo(colorsToChangeTo[nextColorIndex], 0.01f)){
-            TickTransition();
-        }
-        else if (nextColorIndex != finalColorIndex) {
-            nextColorIndex = finalColorIndex > nextColorIndex ? nextColorIndex + 1 : nextColorIndex - 1;
+        if (spriteRenderer)
+        {
+
+            if (!spriteRenderer.color.IsCloseTo(colorsToChangeTo[nextColorIndex], 0.01f))
+            {
+                TickTransition();
+            }
+            else if (nextColorIndex != finalColorIndex)
+            {
+                nextColorIndex = finalColorIndex > nextColorIndex ? nextColorIndex + 1 : nextColorIndex - 1;
+            }
+
         }
 
-        if (DoTransition) { // just as a button for the inspector
+        if (image)
+        {
+
+            if (!image.color.IsCloseTo(colorsToChangeTo[nextColorIndex], 0.01f))
+            {
+                TickTransition();
+            }
+            else if (nextColorIndex != finalColorIndex)
+            {
+                nextColorIndex = finalColorIndex > nextColorIndex ? nextColorIndex + 1 : nextColorIndex - 1;
+            }
+
+        }
+
+        if (DoTransition)
+        { // just as a button for the inspector
             DoTransition = false;
             DoCompleteTransition();
         }
     }
 
-    private void TickTransition() {
-        spriteRenderer.color = Color.Lerp(spriteRenderer.color, colorsToChangeTo[nextColorIndex], colorTransitionSpeed * Time.deltaTime);
+    private void TickTransition()
+    {
+        if (spriteRenderer)
+        {
+            spriteRenderer.color = Color.Lerp(spriteRenderer.color, colorsToChangeTo[nextColorIndex], colorTransitionSpeed * Time.deltaTime);
+        }
+        if (image)
+        {
+            image.color = Color.Lerp(image.color, colorsToChangeTo[nextColorIndex], colorTransitionSpeed * Time.deltaTime);
+        }
+
     }
 
-    public void DoCompleteTransition() {
+    public void DoCompleteTransition()
+    {
         finalColorIndex = finalColorIndex == colorsToChangeTo.Length - 1 ? 0 : colorsToChangeTo.Length - 1;
     }
 }
@@ -54,6 +97,6 @@ static class Extension
     /// <returns>wheter is within tolerence or not</returns>
     public static bool IsCloseTo(this Color me, Color other, float tolerance)
     {
-        return me.r - other.r  < tolerance && me.g - other.g < tolerance && me.b - other.b < tolerance&& me.a - other.a < tolerance;
+        return me.r - other.r < tolerance && me.g - other.g < tolerance && me.b - other.b < tolerance && me.a - other.a < tolerance;
     }
 }
