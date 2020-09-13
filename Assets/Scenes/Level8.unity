@@ -4425,11 +4425,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game GUI
       objectReference: {fileID: 0}
-    - target: {fileID: 3237198407085419408, guid: 1e42425c4b5a24e97a7933a4f7e8b4a3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3237198407085419412, guid: 1e42425c4b5a24e97a7933a4f7e8b4a3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15040,6 +15035,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595694598167458299, guid: 90543a276001f4974a7f0c3ed5dbee04,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.08886719
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90543a276001f4974a7f0c3ed5dbee04, type: 3}
