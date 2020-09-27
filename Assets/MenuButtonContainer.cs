@@ -11,19 +11,12 @@ public class MenuButtonContainer : MonoBehaviour
     void Start()
     {
         rect = GetComponent<RectTransform>();
-        print(" anc " + rect.anchoredPosition);
-        print(" size " + rect.sizeDelta);
     }
 
     // Update is called once per frame
     void Update()
     {
-        print(" anc " + rect.anchoredPosition);
-        print(" size " + rect.sizeDelta);
-
-        print(" ancb " + bottomOfScreen.anchoredPosition);
-        print(" sizeb " + bottomOfScreen.sizeDelta);
+        // this is to set the bottom of the scroll view correctly so it will scroll properly
         rect.sizeDelta = new Vector2(rect.sizeDelta.x, -bottomOfScreen.sizeDelta.y);
-        
     }
 }
