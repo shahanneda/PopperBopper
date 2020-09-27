@@ -48,6 +48,7 @@ SpriteShapeRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -71,7 +72,7 @@ SpriteShapeRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1316780803
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 9
   m_Color: {r: 0, g: 0.078431375, b: 0.34117648, a: 1}
   m_MaskInteraction: 0
@@ -105,6 +106,7 @@ MonoBehaviour:
       bevelSize: 0
       spriteIndex: 0
       corner: 0
+      m_CornerMode: 0
     - position: {x: -2.9486823, y: 6.3048983, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
@@ -114,6 +116,7 @@ MonoBehaviour:
       bevelSize: 0
       spriteIndex: 0
       corner: 1
+      m_CornerMode: 0
     - position: {x: -12.748306, y: 3.7636776, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
@@ -123,6 +126,7 @@ MonoBehaviour:
       bevelSize: 0
       spriteIndex: 0
       corner: 1
+      m_CornerMode: 0
   m_SpriteShape: {fileID: 11400000, guid: f37274ede535b42fa90d70c2e13b8fef, type: 2}
   m_FillPixelPerUnit: 100
   m_StretchTiling: 1
@@ -137,6 +141,7 @@ MonoBehaviour:
   m_OptimizeCollider: 1
   m_OptimizeGeometry: 1
   m_EnableTangents: 0
+  m_GeometryCached: 0
 --- !u!60 &819514061
 PolygonCollider2D:
   m_ObjectHideFlags: 0

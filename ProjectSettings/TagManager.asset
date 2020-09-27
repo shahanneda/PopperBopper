@@ -43,7 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 1
+    locked: 0
   - name: Ground
     uniqueID: 2448677201
     locked: 0
@@ -55,7 +55,7 @@ TagManager:
     locked: 0
   - name: Particles
     uniqueID: 3995943391
-    locked: 1
+    locked: 0
   - name: Player
     uniqueID: 694859259
     locked: 0

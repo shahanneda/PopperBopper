@@ -48,6 +48,7 @@ SpriteShapeRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -71,9 +72,9 @@ SpriteShapeRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1316780803
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Color: {r: 0.031461366, g: 0.037876304, b: 0.066037714, a: 1}
+  m_Color: {r: 0.27450982, g: 0.27450982, b: 0.27450982, a: 1}
   m_MaskInteraction: 0
   m_ShapeTexture: {fileID: 0}
   m_Sprites:
@@ -105,6 +106,7 @@ MonoBehaviour:
       bevelSize: 0
       spriteIndex: 0
       corner: 1
+      m_CornerMode: 0
     - position: {x: -16.939564, y: 101.03044, z: 0}
       leftTangent: {x: 0.38113785, y: 5.7828217, z: 0}
       rightTangent: {x: -1.8749619, y: -28.447906, z: 0}
@@ -114,6 +116,7 @@ MonoBehaviour:
       bevelSize: 0
       spriteIndex: 0
       corner: 1
+      m_CornerMode: 0
     - position: {x: -15.707993, y: 3.4319992, z: 0}
       leftTangent: {x: -7.219658, y: 1.9592438, z: 0}
       rightTangent: {x: 10.347778, y: -2.8081436, z: 0}
@@ -123,6 +126,7 @@ MonoBehaviour:
       bevelSize: 0
       spriteIndex: 0
       corner: 1
+      m_CornerMode: 0
     - position: {x: 13.638599, y: 3.3414307, z: 0}
       leftTangent: {x: -10.059284, y: -0.66817474, z: 0}
       rightTangent: {x: 6.7668247, y: 0.44947815, z: 0}
@@ -132,6 +136,7 @@ MonoBehaviour:
       bevelSize: 0
       spriteIndex: 0
       corner: 1
+      m_CornerMode: 0
   m_SpriteShape: {fileID: 11400000, guid: f37274ede535b42fa90d70c2e13b8fef, type: 2}
   m_FillPixelPerUnit: 100
   m_StretchTiling: 1
@@ -146,6 +151,7 @@ MonoBehaviour:
   m_OptimizeCollider: 1
   m_OptimizeGeometry: 1
   m_EnableTangents: 0
+  m_GeometryCached: 0
 --- !u!68 &2710640385008176606
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -230,3 +236,7 @@ EdgeCollider2D:
   - {x: 14.581927, y: 96.965965}
   - {x: 13.876249, y: 100.26782}
   - {x: 13.5596695, y: 100.75421}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
