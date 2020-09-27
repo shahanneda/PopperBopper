@@ -19,6 +19,11 @@ public class MenuLevelButtonCreator : MonoBehaviour
             GameObject levelButton = Instantiate(levelButtonPrefab, transform);
             levelButton.GetComponentInChildren<TextMeshProUGUI>().text = i.ToString();
 
+            if(PlayerPrefs.HasKey("Level" + i) && PlayerPrefs.GetInt("Level"+i) == 1) {
+                levelButton.GetComponent<Image>().color = new Color(0.03f,0.39f,0);
+
+            }
+
             levelButton.GetComponent<Button>().onClick.AddListener( () => {
                  LevelButtonClicked(int.Parse(levelButton.GetComponentInChildren<TextMeshProUGUI>().text)) ;
             } );

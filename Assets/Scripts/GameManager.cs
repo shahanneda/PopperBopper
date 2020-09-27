@@ -120,6 +120,7 @@ public class GameManager : MonoBehaviour
         levelFinishedLogo.DoCompleteTransition();
 
         Balloon.balloonPoppedCounter = 0;
+        PlayerPrefs.SetInt("Level" + currentLevelNumber, 1);
     }
 
     public void PlayerDead() {
