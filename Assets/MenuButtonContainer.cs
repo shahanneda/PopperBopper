@@ -23,6 +23,7 @@ public class MenuButtonContainer : MonoBehaviour
 
         print(" ancb " + bottomOfScreen.anchoredPosition);
         print(" sizeb " + bottomOfScreen.sizeDelta);
+        rect.sizeDelta = new Vector2(rect.sizeDelta.x, -bottomOfScreen.sizeDelta.y);
         
     }
 }
