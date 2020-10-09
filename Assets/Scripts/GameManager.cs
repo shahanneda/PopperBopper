@@ -35,10 +35,9 @@ public class GameManager : MonoBehaviour
         restartLevelButton = levelGui.transform.Find("Buttons").Find("RestartLevelButton").gameObject;
         nextLevelButton = levelGui.transform.Find("Buttons").Find("NextLevelButton").gameObject;
 
-        menuButton.GetComponent<Button>().onClick.AddListener(MenuButtonClicked);
-        nextLevelButton.GetComponent<Button>().onClick.AddListener(NextLevelButtonClicked);
-        restartLevelButton.GetComponent<Button>().onClick.AddListener(RestartButtonClicked);
 
+
+        Invoke("SetupButtons", 2.0f);
 
 
         levelFinishedLogo.colorsToChangeTo = new Color[] { Color.yellow, Color.red };
@@ -51,6 +50,14 @@ public class GameManager : MonoBehaviour
         }
 
         levelGui.SetActive(false);
+    }
+    void SetupButtons() { 
+    
+        menuButton.GetComponent<Button>().onClick.AddListener(delegate { MenuButtonClicked(); });
+
+        nextLevelButton.GetComponent<Button>().onClick.AddListener(delegate { NextLevelButtonClicked(); });
+
+        restartLevelButton.GetComponent<Button>().onClick.AddListener(delegate { RestartButtonClicked(); });
     }
 
     // Update is called once per frame
@@ -95,16 +102,17 @@ public class GameManager : MonoBehaviour
     }
     public void NextLevelButtonClicked()
     {
-        if (Application.CanStreamedLevelBeLoaded("Level" + (currentLevelNumber + 1)))
-        {
-            SceneManager.LoadScene("Level" + (currentLevelNumber + 1));
-        }
+        //if (Application.CanStreamedLevelBeLoaded("Level" + (currentLevelNumber + 1)))
+        //{
+        //    //SceneManager.LoadScene("Level6");
+        //    //SceneManager.LoadScene("Level" + (currentLevelNumber + 1));
+        //}
 
     }
 
     public void RestartButtonClicked()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LevelEndReached()
