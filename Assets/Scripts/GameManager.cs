@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
 
 
-        Invoke("SetupButtons", 2.0f);
+        Invoke("SetupButtons", 1.0f);
 
 
         levelFinishedLogo.colorsToChangeTo = new Color[] { Color.yellow, Color.red };
