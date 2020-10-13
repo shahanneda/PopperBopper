@@ -102,11 +102,11 @@ public class GameManager : MonoBehaviour
     }
     public void NextLevelButtonClicked()
     {
-        //if (Application.CanStreamedLevelBeLoaded("Level" + (currentLevelNumber + 1)))
-        //{
-        //    //SceneManager.LoadScene("Level6");
-        //    //SceneManager.LoadScene("Level" + (currentLevelNumber + 1));
-        //}
+        if (Application.CanStreamedLevelBeLoaded("Level" + (currentLevelNumber + 1)))
+        {
+            //    //SceneManager.LoadScene("Level6");
+            SceneManager.LoadScene("Level" + (currentLevelNumber + 1));
+        }
 
     }
 

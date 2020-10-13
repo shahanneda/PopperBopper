@@ -14836,6 +14836,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 356014636640563664, guid: 90543a276001f4974a7f0c3ed5dbee04,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 370279172}
+    - target: {fileID: 356014636640563664, guid: 90543a276001f4974a7f0c3ed5dbee04,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartButtonClicked
+      objectReference: {fileID: 0}
     - target: {fileID: 356014636640563665, guid: 90543a276001f4974a7f0c3ed5dbee04,
         type: 3}
       propertyPath: m_AnchorMin.y
