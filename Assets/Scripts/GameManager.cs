@@ -17,11 +17,14 @@ public class GameManager : MonoBehaviour
     private GameObject menuButton;
     private GameObject resumeButton;
 
+    private GameObject pauseButton;
+
     private TextMeshProUGUI levelFinishedText;
     private SlowColorChanger levelEndTint;
     private SlowColorChanger levelFinishedLogo;
 
     public bool isPaused = false;
+    public bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +40,8 @@ public class GameManager : MonoBehaviour
         menuButton = levelGui.transform.Find("Buttons").Find("MenuButton").gameObject;
         restartLevelButton = levelGui.transform.Find("Buttons").Find("RestartLevelButton").gameObject;
         nextLevelButton = levelGui.transform.Find("Buttons").Find("NextLevelButton").gameObject;
+        resumeButton = levelGui.transform.Find("Buttons").Find("ResumeButton").gameObject;
+        pauseButton = GameObject.FindGameObjectWithTag("PauseButton");
 
 
 
@@ -112,6 +117,10 @@ public class GameManager : MonoBehaviour
     }
 
     public void PauseButtonClicked() {
+        if (isPaused) {
+            return;
+        }
+        pauseButton.SetActive(false);
         levelGui.gameObject.SetActive(true);
         TurnOffAllMenuButtons();
 
@@ -119,10 +128,16 @@ public class GameManager : MonoBehaviour
         resumeButton.SetActive(true);
         isPaused = true;
 
+        levelEndTint.colorsToChangeTo = new Color[] { new Color(1.0f,0.0f,0.0f,0), new Color(0.8f, 1.0f, 0.5f, 0.5f)};
+        levelEndTint.SetFirstColor();
+        levelEndTint.DoCompleteTransition();
+
     }
     public void ResumeButtonClicked() {
+        pauseButton.SetActive(true);
         levelGui.gameObject.SetActive(false);
         isPaused = false;
+        levelEndTint.DoCompleteTransition();
     }
 
     private void TurnOffAllMenuButtons() {
@@ -142,9 +157,11 @@ public class GameManager : MonoBehaviour
         TurnOffAllMenuButtons();
         menuButton.SetActive(true);
         nextLevelButton.SetActive(true);
+        pauseButton.SetActive(false);
 
 
         levelEndTint.colorsToChangeTo = new Color[] {levelEndTint.spriteRenderer.color, new Color(0,1,0,0.5f)};
+        levelEndTint.SetFirstColor();
         levelEndTint.DoCompleteTransition();
 
         levelFinishedLogo.colorsToChangeTo = new Color[] { Color.yellow, Color.green };
@@ -155,22 +172,32 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Level" + currentLevelNumber, 1);
     }
 
+
     public void PlayerDead() {
+
+        if (isDead) { // player shoulnd die twice
+            return;
+        }
+        isDead = true;
+
         levelFinished = true;
         levelGui.SetActive(true);
+
+        pauseButton.SetActive(false);
 
         TurnOffAllMenuButtons();
         menuButton.SetActive(true);
         restartLevelButton.SetActive(true);
 
 
-        levelEndTint.colorsToChangeTo = new Color[] { new Color(1,1,1,1), new Color(1, 0, 0, 0.5f)};
+        levelEndTint.colorsToChangeTo = new Color[] { new Color(1,1,0,1), new Color(1, 0, 0, 0.5f)};
+        levelEndTint.SetFirstColor();
+        levelEndTint.DoCompleteTransition();
 
         levelFinishedLogo.colorsToChangeTo = new Color[] { Color.yellow, Color.red };
         levelFinishedText.text = "Level\n" + currentLevelNumber;
         levelFinishedLogo.DoCompleteTransition();
 
-        levelEndTint.DoCompleteTransition();
-
     }
+
 }

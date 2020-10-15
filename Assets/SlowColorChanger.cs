@@ -12,13 +12,13 @@ public class SlowColorChanger : MonoBehaviour
 
     public bool DoTransition = false;
 
-    [HideInInspector]
+    //[HideInInspector]
     public SpriteRenderer spriteRenderer = null;
 
-    [HideInInspector]
+    //[HideInInspector]
     public Image image = null;
 
-    void Start()
+    public void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer == null)
@@ -29,6 +29,25 @@ public class SlowColorChanger : MonoBehaviour
                 Debug.LogError("No image or sprite renderer attached to color changer!!!");
             }
         }
+    }
+
+    public void SetFirstColor() {
+        if(spriteRenderer != null) {
+          spriteRenderer.color = colorsToChangeTo[0];
+        }
+        else if(image !=null) {
+            image.color = colorsToChangeTo[0];
+        }
+        else {
+            Debug.LogError("NO Image or Sprite Renderer!", gameObject);
+            print(gameObject.name);
+            print(spriteRenderer);
+            print(image);
+            
+            Debug.Break();
+        
+        }
+
     }
 
     void Update()
@@ -83,6 +102,7 @@ public class SlowColorChanger : MonoBehaviour
 
     public void DoCompleteTransition()
     {
+        Debug.Log("DOING TRAN");
         finalColorIndex = finalColorIndex == colorsToChangeTo.Length - 1 ? 0 : colorsToChangeTo.Length - 1;
     }
 }
