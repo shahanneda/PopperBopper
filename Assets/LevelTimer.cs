@@ -44,13 +44,13 @@ public class LevelTimer : MonoBehaviour
     }
 
     void UpdateText() {
+        text.text = GetTextForTime(CalulateTime());
+    }
 
-        float time = CalulateTime();
-
+    public static string GetTextForTime(float time) { 
         string minutes = Mathf.Floor(time / 60).ToString("00");
         string seconds = (time).ToString("00.00");
-        text.text = time/60 >= 1 ? minutes + ":" + seconds : seconds;
-
+        return time/60 >= 1 ? minutes + ":" + seconds : seconds;
     }
 
     float CalulateTime() { 

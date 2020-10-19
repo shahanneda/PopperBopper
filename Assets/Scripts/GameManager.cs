@@ -165,6 +165,7 @@ public class GameManager : MonoBehaviour
     public void LevelEndReached()
     {
         levelTimer.Pause();
+        levelTimer.SaveToPlayerPrefs(currentLevelNumber);
         levelFinished = true;
         levelGui.SetActive(true);
 
