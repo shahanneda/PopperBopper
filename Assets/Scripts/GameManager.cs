@@ -108,10 +108,12 @@ public class GameManager : MonoBehaviour
 
     public void MenuButtonClicked()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
     public void NextLevelButtonClicked()
     {
+        Time.timeScale = 1;
         if (Application.CanStreamedLevelBeLoaded("Level" + (currentLevelNumber + 1)))
         {
             //    //SceneManager.LoadScene("Level6");
@@ -122,6 +124,8 @@ public class GameManager : MonoBehaviour
 
     public void RestartButtonClicked()
     {
+        Time.timeScale = 1;
+        MultipleBalloonpoppedPowerup.progress = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -136,6 +140,7 @@ public class GameManager : MonoBehaviour
 
         menuButton.SetActive(true);
         resumeButton.SetActive(true);
+        restartLevelButton.SetActive(true);
         isPaused = true;
 
         levelFinishedText.text = "Level\n" + currentLevelNumber;
@@ -174,6 +179,8 @@ public class GameManager : MonoBehaviour
 
         TurnOffAllMenuButtons();
         menuButton.SetActive(true);
+        restartLevelButton.SetActive(true);
+
         nextLevelButton.SetActive(true);
         pauseButton.SetActive(false);
 
