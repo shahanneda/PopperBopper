@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     public bool isPaused = false;
     public bool isDead = false;
+    private Color initalTintColor = new Color(1, 1, 1, 0);
 
     // Start is called before the first frame update
     void Start()
@@ -132,7 +133,9 @@ public class GameManager : MonoBehaviour
         resumeButton.SetActive(true);
         isPaused = true;
 
-        levelEndTint.colorsToChangeTo = new Color[] { new Color(1.0f,0.0f,0.0f,0), new Color(0.8f, 1.0f, 0.5f, 0.5f)};
+        levelFinishedText.text = "Level\n" + currentLevelNumber;
+
+        levelEndTint.colorsToChangeTo = new Color[] { initalTintColor, new Color(0.8f, 1.0f, 0.5f, 0.5f)};
         levelEndTint.SetFirstColor();
         levelEndTint.DoCompleteTransition();
 
@@ -164,7 +167,8 @@ public class GameManager : MonoBehaviour
         pauseButton.SetActive(false);
 
 
-        levelEndTint.colorsToChangeTo = new Color[] {levelEndTint.spriteRenderer.color, new Color(0,1,0,0.5f)};
+        levelEndTint.colorsToChangeTo = new Color[] {initalTintColor, new Color(0,1,0,0.8f)};
+        levelEndTint.SetFirstColor();
         levelEndTint.DoCompleteTransition();
 
         levelFinishedLogo.colorsToChangeTo = new Color[] { Color.yellow, Color.green };
@@ -193,7 +197,7 @@ public class GameManager : MonoBehaviour
         restartLevelButton.SetActive(true);
 
 
-        levelEndTint.colorsToChangeTo = new Color[] { new Color(1,1,0,0.0f), new Color(1, 0, 0, 0.5f)};
+        levelEndTint.colorsToChangeTo = new Color[] {initalTintColor, new Color(1, 0, 0, 0.5f)};
         levelEndTint.SetFirstColor();
         levelEndTint.DoCompleteTransition();
 
