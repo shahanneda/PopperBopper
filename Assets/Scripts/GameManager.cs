@@ -132,6 +132,7 @@ public class GameManager : MonoBehaviour
         pauseButton.SetActive(false);
         levelGui.gameObject.SetActive(true);
         TurnOffAllMenuButtons();
+        Time.timeScale = 0;
 
         menuButton.SetActive(true);
         resumeButton.SetActive(true);
@@ -147,6 +148,7 @@ public class GameManager : MonoBehaviour
 
     }
     public void ResumeButtonClicked() {
+        Time.timeScale = 1;
         pauseButton.SetActive(true);
         levelGui.gameObject.SetActive(false);
         isPaused = false;

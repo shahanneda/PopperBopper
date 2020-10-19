@@ -92,11 +92,11 @@ public class SlowColorChanger : MonoBehaviour
     {
         if (spriteRenderer)
         {
-            spriteRenderer.color = Color.Lerp(spriteRenderer.color, colorsToChangeTo[nextColorIndex], colorTransitionSpeed * Time.deltaTime);
+            spriteRenderer.color = Color.Lerp(spriteRenderer.color, colorsToChangeTo[nextColorIndex], colorTransitionSpeed * Time.unscaledDeltaTime);
         }
         if (image)
         {
-            image.color = Color.Lerp(image.color, colorsToChangeTo[nextColorIndex], colorTransitionSpeed * Time.deltaTime);
+            image.color = Color.Lerp(image.color, colorsToChangeTo[nextColorIndex], colorTransitionSpeed * Time.unscaledDeltaTime);
         }
 
     }
