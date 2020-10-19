@@ -78,9 +78,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+  // doing this manually instead of the built in OnClick because of some bugs with the unity system
     void handleClickOn(Vector3 pos)
-    { // doing this manually instead of the built in OnClick because of some bugs with the unity systemk
+    { 
+        if (isPaused) {
+            return;
+        }
+
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(pos);
         worldPos.z = 0;
         //GameObject.FindGameObjectWithTag("Player").transform.position = worldPos;
@@ -161,7 +165,6 @@ public class GameManager : MonoBehaviour
 
 
         levelEndTint.colorsToChangeTo = new Color[] {levelEndTint.spriteRenderer.color, new Color(0,1,0,0.5f)};
-        levelEndTint.SetFirstColor();
         levelEndTint.DoCompleteTransition();
 
         levelFinishedLogo.colorsToChangeTo = new Color[] { Color.yellow, Color.green };
@@ -190,7 +193,7 @@ public class GameManager : MonoBehaviour
         restartLevelButton.SetActive(true);
 
 
-        levelEndTint.colorsToChangeTo = new Color[] { new Color(1,1,0,1), new Color(1, 0, 0, 0.5f)};
+        levelEndTint.colorsToChangeTo = new Color[] { new Color(1,1,0,0.0f), new Color(1, 0, 0, 0.5f)};
         levelEndTint.SetFirstColor();
         levelEndTint.DoCompleteTransition();
 

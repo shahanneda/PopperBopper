@@ -20,6 +20,10 @@ public class SlowColorChanger : MonoBehaviour
 
     public void Start()
     {
+        OnEnable();
+    }
+    public void OnEnable()
+    {
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer == null)
         {
@@ -43,9 +47,6 @@ public class SlowColorChanger : MonoBehaviour
             print(gameObject.name);
             print(spriteRenderer);
             print(image);
-            
-            Debug.Break();
-        
         }
 
     }
