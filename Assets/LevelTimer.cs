@@ -49,7 +49,7 @@ public class LevelTimer : MonoBehaviour
 
     public static string GetTextForTime(float time) { 
         string minutes = Mathf.Floor(time / 60).ToString("00");
-        string seconds = (time).ToString("00.00");
+        string seconds = (time%60).ToString("00.00");
         return time/60 >= 1 ? minutes + ":" + seconds : seconds;
     }
 
