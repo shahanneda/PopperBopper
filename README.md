@@ -1,5 +1,5 @@
 # PopperBopper
-A 2D unity game, designed for mobile devices, available on the **App Store**, and **Play Store**
+A 2D unity game, designed for mobile devices, available on the **[App Store](https://apps.apple.com/us/app/id1535142342)**, and **[Play Store](https://play.google.com/store/apps/details?id=com.ca.shahan.PopperBopper)**
 
 <table>
   <tr>
